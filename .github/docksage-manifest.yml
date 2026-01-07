@@ -1,0 +1,16 @@
+# Sample GitHub App manifest (use in GitHub's "Create an App from manifest" flow as a starting point)
+# This is a sample only — adjust URLs and permissions to match your DockSage installation.
+name: test-docksage
+url: https://example.com/
+hook_attributes:
+  url: https://example.com/api/github-webhook
+redirect_url: https://example.com/settings/apps/test-docksage
+public: false
+default_permissions:
+  contents: read
+  pull_requests: write
+  issues: write
+default_events:
+  - pull_request
+  - pull_request_review
+  - push
