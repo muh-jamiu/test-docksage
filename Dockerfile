@@ -14,6 +14,7 @@ RUN chmod -R 777 /app
 
 EXPOSE 3000
 
-LABEL maintainer="you@example.com"
+LABEL maintainer="ganiujamiu03@example.com"
 
 CMD ["node", "index.js"]
+
