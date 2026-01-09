@@ -19,4 +19,3 @@ EXPOSE 3000
 LABEL maintainer="ganiujamiu03@example.com"
 
 CMD ["node", "index.js"]
-
