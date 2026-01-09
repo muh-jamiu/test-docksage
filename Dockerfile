@@ -1,19 +1,23 @@
 # Intentional Hadolint warnings: use root, apt-get (on debian base), ADD instead of COPY, and missing HEALTHCHECK
-FROM node:16
+FROM node:16-bullseye
 
-# Use of apt-get in node base will cause warnings (DL3013, etc.)
-RUN apt-get update && apt-get install -y curl 
+# Use apt-get carefully and clean up lists to keep image small
+RUN apt-get update \
+	&& apt-get install -y --no-install-recommends curl \
+	&& rm -rf /var/lib/apt/lists/*
 
-# Using ADD instead of COPY (bad practice)
-ADD . /app
+# Use COPY instead of ADD for local files
+COPY . /app
 
 WORKDIR /app
 
-# Broad permissions
+# Broad permissions (intentional for this sample)
 RUN chmod -R 777 /app
 
 EXPOSE 3000
 
-LABEL maintainer="you@example.com"
+LABEL maintainer="ganiujamiu03@example.com"
 
 CMD ["node", "index.js"]
+
+
